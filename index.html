@@ -18,14 +18,54 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            position: relative;
+            overflow-x: hidden;
         }
+
+        /* Subtle white curve shapes in background */
+        body::before,
+        body::after {
+            content: "";
+            position: absolute;
+            width: 150%;
+            height: 150%;
+            top: -25%;
+            left: -25%;
+            background: radial-gradient(circle at 30% 20%, rgba(255,255,255,0.04) 0%, transparent 40%);
+            border-radius: 50%;
+            transform: rotate(15deg);
+            z-index: -2;
+            animation: float 25s infinite ease-in-out;
+        }
+        body::after {
+            background: radial-gradient(circle at 70% 80%, rgba(255,255,255,0.03) 0%, transparent 40%);
+            transform: rotate(-10deg);
+            animation: float 30s infinite ease-in-out reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(15deg); }
+            50% { transform: translate(5%, 10%) rotate(20deg); }
+        }
+
         .hero {
             text-align: center;
-            padding: 120px 20px 80px;
+            padding: 140px 20px 100px;
             max-width: 900px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1.2s forwards 0.3s;
         }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         h1 {
-            font-size: 4.5rem;
+            font-size: 3.5rem;
             font-weight: 700;
             margin-bottom: 0.5rem;
             line-height: 1;
@@ -107,10 +147,8 @@
         <div class="role">Learning to Code • Games & Backend</div>
 
         <p class="bio">
-            Hey, I'm 16 and just started coding in Python.<br>
-            Right now I'm making simple games and building my first projects.<br>
-            Eventually I want to learn backend stuff like APIs and databases.<br>
-            Based in Las Vegas.
+            Hello. I'm Kaleb Cooper.<br>
+            Right now I'm making simple games and building my first projects.
         </p>
 
         <div class="stack">
@@ -121,26 +159,26 @@
         </div>
 
         <div class="buttons">
-            <a href="#games" class="btn btn-primary">See My Games →</a>
+            <a href="#projects" class="btn btn-primary">See My Projects →</a>
             <a href="mailto:your@email.com" class="btn btn-secondary">Get In Touch</a>
         </div>
     </section>
 
-    <section id="games" style="padding: 80px 20px; max-width: 900px; text-align: center;">
-        <h2 style="font-size: 2.5rem; margin-bottom: 2rem; color: #cbd5e1;">Games & Projects</h2>
+    <section id="projects" style="padding: 80px 20px; max-width: 900px; text-align: center;">
+        <h2 style="font-size: 2.5rem; margin-bottom: 2rem; color: #cbd5e1;">Projects</h2>
         <ul style="list-style: none; display: grid; gap: 2rem; max-width: 600px; margin: 0 auto;">
             <li style="background: #1e293b; padding: 2rem; border-radius: 12px;">
-                Game 1 - coming soon<br>
-                (download / play link here later)
+                Project 1 - coming soon<br>
+                (download / view link here later)
             </li>
             <li style="background: #1e293b; padding: 2rem; border-radius: 12px;">
-                Game 2 - coming soon
+                Project 2 - coming soon
             </li>
         </ul>
     </section>
 
     <footer>
-        © 2026 Kaleb Cooper • Las Vegas • Made with HTML & lots of trial and error
+        © 2026 Kaleb Cooper
     </footer>
 
 </body>
